@@ -1,0 +1,6 @@
+// making the blog website backend
+// there has four thing create,read,update,delete
+// that is only option to be delete and update only by the person can do this thing 
+// that show on the fron page so use ejs file 
+// make the person schema how that is look like 
+//  that look on fron of the person 
