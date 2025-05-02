@@ -10,12 +10,14 @@ const authloginRoutes=require('./Auth/login')
 const authsignRoutes=require('./Auth/singnup')
 
 app.use(express.json()); // ✅ Parses JSON requests
-app.use('/api', create); // ✅ Routes prefixed with /api
-app.use('/api',deleteb);
-app.use('/api',update);
-app.use('/api',Read);
+app.use('/api', [create,deleteb,update,Read]); // ✅ Routes prefixed with /api
+// app.use('/api',deleteb);
+// app.use('/api',update);
+// app.use('/api',Read);
 app.use('/auth',authloginRoutes);
 app.use('/auth',authsignRoutes);
+app.use('/uploads', express.static('uploads'));
+
 
 
 

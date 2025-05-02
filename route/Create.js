@@ -1,13 +1,16 @@
 const express=require('express')
 const router=express.Router();
-const blogModel=require('../model/blog')
+const blogModel=require('../model/blog');
+const upload=require('../MulterMiddleWare/multMiddleware');
 
-router.get('/test', (req, res) => {
-    res.send('router is working!');
-});
-router.post('/create',async(req,res)=>{
+
+router.post('/create',upload.single('image'), async(req,res)=>{
+   
     try{
-        const newblog=new blogModel(req.body);
+        const newblog=new blogModel({
+            ...req.body,
+          image:req.file?req.file.filename:null,
+        });
         const savItem=await newblog.save();
         res.status(200).json(savItem);
      }
